@@ -1,10 +1,6 @@
-// @flow
-// import type { appLocationType } from '../reducers/registrar';
-
-export const REGISTERED_APPS = 'REGISTERED_APPS';
-
-export function register() {
+export function createRegistar(registeredApplications) {
   return {
-    type: REGISTERED_APPS
+    type: 'CREATE_REGISTAR',
+    registered_applications: registeredApplications
   };
 }
