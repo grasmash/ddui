@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 
-export class Navigation extends Component {
+export class TopNavigation extends Component {
   constructor(props, context) {
     super(props, context);
     this.onClickRegister = this.onClickRegister.bind(this);
@@ -18,18 +18,16 @@ export class Navigation extends Component {
     this.setState({
      registered_applications
     });
+    console.log(this.state);
   }
 
   render() {
+    let navStyle = {
+      marginBottom: '0',
+    };
     return (
-      <nav className="navbar navbar-default navbar-static-top" role="navigation">
+      <nav className="navbar navbar-default navbar-static-top" role="navigation" style={navStyle}>
         <div className="navbar-header">
-          <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span className="sr-only">Toggle navigation</span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-          </button>
           <a className="navbar-brand" href="index.html">Drupal Dev UI</a>
         </div>
 
