@@ -1,9 +1,9 @@
 // @flow
 import React, { Component } from 'react';
 import styles from './Home.css';
-import {TopNavigation} from "./TopNavigation";
-import {LeftNavigation} from "./LeftNavigation";
-import {ApplicationPanelList} from "./ApplicationPanelList";
+import TopNavigation from './TopNavigation';
+import { LeftNavigation } from './LeftNavigation';
+import { ApplicationPanelList } from './ApplicationPanelList';
 
 export default class Home extends Component {
   render() {

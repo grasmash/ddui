@@ -1,16 +1,8 @@
-// @flow
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../actions/registrar';
-
-type appLocationType = {
-  +type: string
-};
-
-export default function counter(state: number = 0, action: actionType) {
+export default function registerReducer(state = [], action) {
   switch (action.type) {
-    case INCREMENT_COUNTER:
-      return state + 1;
-    case DECREMENT_COUNTER:
-      return state - 1;
+    case 'CREATE_REGISTAR':
+      console.log('state for registar.js reducers is: ', state);
+      return [...state, Object.assign({}, action.registered_applications)];
     default:
       return state;
   }

@@ -1,24 +1,29 @@
-// @flow
-import React, { Component } from 'react';
+import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as registarActions from '../actions/registrar';
 
-export class TopNavigation extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.onClickRegister = this.onClickRegister.bind(this);
+class TopNavigation extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
     this.state = {
       registered_applications: {
-        locations: null
+        location: null
       }
-    };
+    }
   }
 
-  onClickRegister(event) {
+  handleClick(event) {
+    event.preventDefault();
     const registered_applications = this.state.registered_applications;
-    registered_applications.locations = event.target.text;
+    registered_applications.location = event.target.text;
     this.setState({
-     registered_applications
+      registered_applications
     });
-    console.log(this.state);
+    this.props.actions.createRegistar(this.state.registered_applications);
+    console.log(event.target.text);
   }
 
   render() {
@@ -38,12 +43,28 @@ export class TopNavigation extends Component {
           </a>
           </li>
           <li className="dropdown">
-            <a className="dropdown-toggle" onClick={this.onClickRegister} data-toggle="dropdown" href="#" id="register-app">
-              Register App <i className="fa fa-plus fa-fw"></i>
+
+            <a className="dropdown-toggle" onClick={this.handleClick} data-toggle="dropdown" href="#" id="register-app">
+              Register the App <i className="fa fa-plus fa-fw"></i>
             </a>
+
           </li>
          </ul>
       </nav>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    registered_applications: state.registered_applications
+  };
+}
+
+function MapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(registarActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, MapDispatchToProps)(TopNavigation);
